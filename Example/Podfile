@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SwiftListKit_Example' do
+  pod 'SwiftListKit', :path => '../'
+
+  target 'SwiftListKit_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
