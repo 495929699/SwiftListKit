@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - SwiftListKit (0.1.0)
+  - SwiftListKit (0.1.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  SwiftListKit: 6c2ffab2013a2a5b32eda3943aae2cb277a5d916
+  SwiftListKit: 26b8cd3b66f42d3d2429ec3b80f8babd1964411a
 
 PODFILE CHECKSUM: e4d29a0388c9ae978d4370ccd434abdca0a7da81
 
