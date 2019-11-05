@@ -7,20 +7,5 @@
 
 import UIKit
 
-//// MARK: - UICollectionViewDataSource
-//extension ListAdapter: UICollectionViewDataSource {
-//    
-//    
-//}
-//
-//
-//extension ListAdapter: UICollectionViewDelegate {
-//    
-//}
-//
-//
-//extension ListAdapter: UICollectionViewDelegateFlowLayout {
-//    
-//    
-//    
-//}
+
+

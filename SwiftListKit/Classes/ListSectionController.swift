@@ -16,8 +16,12 @@ public protocol ListScrollDelegate: class {
     
 }
 
+public protocol SectionItem {
+    
+}
+
 public protocol ListSectionType {
-    associatedtype Item: Equatable
+    associatedtype Item: SectionItem
     
     var section: UInt { get }
     var isFirstSection: Bool { get }
@@ -65,8 +69,8 @@ extension ListSectionType {
     
 }
 
-public class ListSectionController<T: Equatable>: ListSectionType {
-    public typealias Item = T
+public class ListSectionController<Item: SectionItem>: ListSectionType {
+    public typealias Item = Item
     
     public var viewController: UIViewController
     
@@ -74,7 +78,7 @@ public class ListSectionController<T: Equatable>: ListSectionType {
     
     public var scrollDegate: ListScrollDelegate?
     
-    public func didUpdate<T>(to object: T) {
+    public func didUpdate<Item>(to object: Item) {
         
     }
     

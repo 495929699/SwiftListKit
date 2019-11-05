@@ -1,0 +1,6 @@
+framework module SwiftListKit {
+  umbrella header "SwiftListKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

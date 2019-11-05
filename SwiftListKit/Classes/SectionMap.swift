@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SectionMap<Item: Equatable> {
+struct SectionMap<Item: SectionItem> {
     var keys: [String] = []
     var objects: [ListSectionController<Item>] = []
     
@@ -20,6 +20,11 @@ struct SectionMap<Item: Equatable> {
             fatalError("找不到 \(section)下标 对应的ListSectionController")
         }
         return objects[section]
+    }
+    
+    func reset() {
+        keys.removeAll()
+        objects.removeAll()
     }
     
 //    func object<Section: ListSectionType>(for section: Int) -> Section where Section.Item == Item {

@@ -7,19 +7,81 @@
 
 import UIKit
 
-public class ListAdapter<Item: Equatable>: NSObject,
+public class ListAdapter<Item: SectionItem>: NSObject,
 UICollectionViewDataSource,
 UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout {
     // MARK: - 自有属性
     var sectionMap: SectionMap<Item> = SectionMap()
     
-    weak private(set) var collectionView: UICollectionView? {
+    var _viewSwctionControllerMap: [UICollectionReusableView : ListSectionController<Item>] = [:]
+    
+    // 注册数组
+    var _registeredCellIdentifiers: [String] = []
+    var _registeredNibNames: [String] = []
+    var _registeredSupplementaryViewIdentifiers: [String] = []
+    var _registeredSupplementaryViewNibNames: [String] = []
+    
+    weak var viewController: UIViewController?
+    
+    weak var collectionView: UICollectionView? {
         didSet {
             self.collectionView?.dataSource = self
             self.collectionView?.delegate = self
         }
     }
+    
+    //MARK: 初始化
+    public init(collectionView: UICollectionView,
+                viewController: UIViewController,
+                dataSource: ListAdapterDataSource) {
+        self.collectionView = collectionView
+        self.viewController = viewController
+        self.dataSource = dataSource
+    }
+    
+    deinit {
+        self.dataSource = nil
+        self.delegate = nil
+    }
+    
+    //MARK: 组合代理属性
+    weak var dataSource: ListAdapterDataSource?
+    
+    weak var delegate: ListAdapterDelegate?
+    
+    weak var collectionViewDelegate: UICollectionViewDelegate?
+    
+    weak var scrollViewDelegate: UIScrollViewDelegate?
+    
+    //MARK: 自有方法
+    public func reload(objects: [Item]) {
+        
+    }
+    
+    public var visibleSectionControllers: [ListSectionController<Item>] {
+        return []
+    }
+    
+    public var visibleObjects: [Item] {
+        return []
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
