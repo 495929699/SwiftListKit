@@ -20,9 +20,7 @@ public protocol SectionItem {
     
 }
 
-public protocol ListSectionType {
-    associatedtype Item: SectionItem
-    
+public protocol ListSectionController {
     var section: UInt { get }
     var isFirstSection: Bool { get }
     var isLastSection: Bool { get }
@@ -38,11 +36,11 @@ public protocol ListSectionType {
     func numberOfItems() -> Int
     func sizeForItem(at index: Int) -> CGSize
     func cellForItem(at index: Int) -> UICollectionViewCell
-    func didUpdate<Item>(to object: Item)
+    func didUpdate<Item: SectionItem>(to object: Item)
     func didSelectItem(at index: Int)
 }
 
-extension ListSectionType {
+extension ListSectionController {
     public var section: UInt {
         return 0;
     }
@@ -69,6 +67,7 @@ extension ListSectionType {
     
 }
 
+/*
 public class ListSectionController<Item: SectionItem>: ListSectionType {
     public typealias Item = Item
     
@@ -99,3 +98,4 @@ public class ListSectionController<Item: SectionItem>: ListSectionType {
     }
 
 }
+*/

@@ -9,6 +9,6 @@ import Foundation
 
 public protocol ListAdapterDataSource: class {
     func objects<Item: SectionItem>(for listAdapter: ListAdapter<Item>) -> [Item]
-    func listAdapter<Item: SectionItem>(_ listAdapter: ListAdapter<Item>, sectionControllerFor object: Item) -> ListSectionController<Item>
+    func listAdapter<Item: SectionItem>(_ listAdapter: ListAdapter<Item>, sectionControllerFor object: Item) -> ListSectionController
     func emptyView<Item: SectionItem>(for listAdapter: ListAdapter<Item>) -> UIView?
 }
