@@ -8,14 +8,14 @@
 import UIKit
 
 final class ListDataSource: NSObject, UICollectionViewDataSource {
-    private var sectionMap: SectionMap
+    private var sectionMap: ListSectionMap
     
-    init(sectionMap: SectionMap) {
+    init(sectionMap: ListSectionMap) {
         self.sectionMap = sectionMap
         super.init()
     }
     
-    func update(section map: SectionMap) {
+    func update(section map: ListSectionMap) {
         self.sectionMap = map;
     }
     
@@ -45,14 +45,14 @@ final class ListDelegate: NSObject,
 UICollectionViewDelegate,
 UICollectionViewDelegateFlowLayout {
     
-    private var sectionMap: SectionMap
+    private var sectionMap: ListSectionMap
     
-    init(sectionMap: SectionMap) {
+    init(sectionMap: ListSectionMap) {
         self.sectionMap = sectionMap
         super.init()
     }
     
-    func update(section map: SectionMap) {
+    func update(section map: ListSectionMap) {
         self.sectionMap = map;
     }
     

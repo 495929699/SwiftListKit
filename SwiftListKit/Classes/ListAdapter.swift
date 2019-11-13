@@ -24,7 +24,7 @@ public class ListAdapter {
     
     
     // MARK: - 自有属性
-    var sectionMap: SectionMap = SectionMap()
+    var sectionMap: ListSectionMap = ListSectionMap()
     
     var _viewSwctionControllerMap: [UICollectionReusableView : ListSectionController] = [:]
     
@@ -80,7 +80,7 @@ public class ListAdapter {
 
 extension  ListAdapter {
     
-    func updateSectionMap(_ map: SectionMap) {
+    func updateSectionMap(_ map: ListSectionMap) {
         // 可加入串行队列，防止多线程时出错
         sectionMap = map
         _collectionDataSource.update(section: map)

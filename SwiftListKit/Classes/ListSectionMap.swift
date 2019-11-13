@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SectionMap {
+struct ListSectionMap {
     var keys: [String] = []
     var objects: [ListSectionController] = []
     

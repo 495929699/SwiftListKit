@@ -14,6 +14,7 @@ public protocol ListAdapterDataSource: class {
     func emptyView(for listAdapter: ListAdapter) -> UIView?
 }
 
+
 // MARK: - ListAdapterDelegate
 public protocol ListAdapterDelegate: class {
     func listAdapter<Item: SectionItem>(_ listAdapter: ListAdapter, willDisplay object: Item, at index: Int)
