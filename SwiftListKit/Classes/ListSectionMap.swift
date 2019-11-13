@@ -8,24 +8,36 @@
 import Foundation
 
 struct ListSectionMap {
-    var keys: [String] = []
-    var objects: [ListSectionController] = []
+    private var sectionMap: [String : ListSectionController] = [:]
+    private var values: [ListSectionController] = []
     
     var count: Int {
-        return keys.count
+        return values.map { $0.numberOfItems() }.reduce(0, { $0 + $1 })
+    }
+    
+    /// Map里是否没有 Item
+    var isEmpty: Bool {
+        return count > 0
     }
     
     mutating func reset() {
-        keys.removeAll()
-        objects.removeAll()
+        sectionMap = [:]
+        values = []
+    }
+    
+    func contains(_ diff: ListDiffable) -> Bool {
+        return sectionMap.keys.contains(diff.diffIdentifier)
     }
     
     subscript(index: Int) -> ListSectionController {
-        guard index >= keys.count || index >= objects.count
-            else {
+        guard index >= values.count else {
               fatalError("找不到 \(index)下标 对应的ListSectionController")
         }
-        return objects[index]
+        return values[index]
+    }
+    
+    subscript(diff: ListDiffable) -> ListSectionController? {
+        return sectionMap[diff.diffIdentifier]
     }
     
 }

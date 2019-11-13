@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class ListAdapter {
+final public class ListAdapter {
     
     public weak var collectionView: UICollectionView? {
         didSet {
@@ -32,6 +32,9 @@ public class ListAdapter {
     var _collectionDataSource: ListDataSource
     var _collectionDelegate: ListDelegate
     
+    /// 更新CollectionView的对象
+    var _updater: ListAdpterUpdater
+    
     // 注册数组
     var _registeredCellIdentifiers: [String] = []
     var _registeredNibNames: [String] = []
@@ -42,10 +45,12 @@ public class ListAdapter {
     //MARK: 初始化
     public init(collectionView: UICollectionView,
                 viewController: UIViewController,
-                dataSource: ListAdapterDataSource) {
+                dataSource: ListAdapterDataSource,
+                updater: ListAdpterUpdater = ListAdpterUpdater()) {
         self.collectionView = collectionView
         self.viewController = viewController
         self.dataSource = dataSource
+        self._updater = updater
         
         _collectionDataSource = ListDataSource(sectionMap: sectionMap)
         _collectionDelegate = ListDelegate(sectionMap: sectionMap)
@@ -74,11 +79,47 @@ public class ListAdapter {
 //    public var visibleObjects: [Item] {
 //        return []
 //    }
+    
+    
+    func _updateAfterPublicSettingsChange() {
+        guard
+            let uniqueObjects = dataSource?.objects(for: self),
+            !uniqueObjects.isEmpty,
+            let dataSource = self.dataSource
+        else { return }
+        
+////        let (validObjects,sectionControllers) =
+//            uniqueObjects
+//                .map(configureSection(for:))
+//                .compactMap { $0 }.reduce([]) { (<#Result#>, <#(ListDiffable, ListSectionController)#>) -> Result in
+//                    <#code#>
+        }
+        
+    }
+    
+    func configureSection(for diff: ListDiffable) -> (ListDiffable, ListSectionController)? {
+        var sectionController = sectionMap[diff]
+        if sectionController == nil {
+            sectionController = dataSource?.listAdapter(self, sectionControllerFor: diff)
+        }
+        guard var section = sectionController else {
+            assertionFailure("\(dataSource) 找不到 \(diff)对应的 sectionController")
+            return nil
+        }
+        
+        section.viewController = self.viewController
+        section.collectionContext = self
+        
+        guard sectionMap.contains(diff) else {
+            return nil
+        }
+        return (diff, section)
+    }
 
 }
 
 
-extension  ListAdapter {
+extension ListAdapter {
     
     func updateSectionMap(_ map: ListSectionMap) {
         // 可加入串行队列，防止多线程时出错
@@ -86,5 +127,10 @@ extension  ListAdapter {
         _collectionDataSource.update(section: map)
         _collectionDelegate.update(section: map)
     }
+    
+}
+
+extension ListAdapter: ListCollectionContext {
+    
     
 }

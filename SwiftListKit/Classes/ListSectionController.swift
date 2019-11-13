@@ -16,8 +16,8 @@ public protocol ListScrollDelegate: class {
     
 }
 
-public protocol SectionItem {
-    
+public protocol ListDiffable {
+    var diffIdentifier: String { get }
 }
 
 public protocol ListSectionController {
@@ -28,15 +28,15 @@ public protocol ListSectionController {
     var minimumLineSpacing: CGFloat { get }
     var minimumInteritemSpacing: CGFloat { get }
     
-    var viewController: UIViewController { get }
-    var collectionContext: ListCollectionContext? { get }
+    var viewController: UIViewController? { set get }
+    var collectionContext: ListCollectionContext? { set get }
     
-    var scrollDegate: ListScrollDelegate? { get }
+    var scrollDegate: ListScrollDelegate? { set get }
     
     func numberOfItems() -> Int
     func sizeForItem(at index: Int) -> CGSize
     func cellForItem(at index: Int) -> UICollectionViewCell
-    func didUpdate<Item: SectionItem>(to object: Item)
+    func didUpdate<T: ListDiffable>(to object: T)
     func didSelectItem(at index: Int)
 }
 

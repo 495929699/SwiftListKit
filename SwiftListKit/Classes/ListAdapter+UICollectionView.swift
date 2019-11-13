@@ -59,8 +59,7 @@ UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       //        collectionDelegate 代理事件出去
-        sectionMap[indexPath.section]
-            .didSelectItem(at: indexPath.item)
+        sectionMap[indexPath.section].didSelectItem(at: indexPath.item)
     }
       
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

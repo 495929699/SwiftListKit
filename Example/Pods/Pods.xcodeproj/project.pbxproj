@@ -40,6 +40,8 @@
 		E0B8D095C732352C854D365B9E5B993D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAA89EEF1039078430D7A886477E365 /* UIKit.framework */; };
 		E4BE36DE4F12C9040FD93F1F9C18D327 /* Pods-SwiftListKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D7C12AE022A053702CB09312D2A1AD9 /* Pods-SwiftListKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0B81AC7DF4855803A0FA70985F8A99 /* FBSnapshotTestCasePlatform.m */; };
+		EC9532C8237C098F0023D41E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9532C7237C098F0023D41E /* Array.swift */; };
+		ECAE25D6237B9A4B00E1BE13 /* ListAdpterUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAE25D5237B9A4B00E1BE13 /* ListAdpterUpdater.swift */; };
 		F1AAAE00BB32B733B238E2B4E8424506 /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = A25844C26701FA4BCAEF64150B56777F /* UIImage+Compare.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F720FAF13A108CE6901E0A8B0580E1E8 /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E621F768263424D9C5C35D58513625CB /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF2367CC379D003F9A2ABE06862EB56A /* SwiftListKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B1D42451D1023A2864509F2D78CDD4 /* SwiftListKit-dummy.m */; };
@@ -129,6 +131,8 @@
 		E621F768263424D9C5C35D58513625CB /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		E7955D2FC54F434A9DCCF0541D5E6BDF /* ListSectionMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListSectionMap.swift; path = SwiftListKit/Classes/ListSectionMap.swift; sourceTree = "<group>"; };
 		EA718A72E676291836EBB46B85242155 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
+		EC9532C7237C098F0023D41E /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = SwiftListKit/Classes/Array.swift; sourceTree = "<group>"; };
+		ECAE25D5237B9A4B00E1BE13 /* ListAdpterUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListAdpterUpdater.swift; path = SwiftListKit/Classes/ListAdpterUpdater.swift; sourceTree = "<group>"; };
 		EF53D290F564A9B10CEF56C9DC2010F2 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
 		F0D08C26EDA00AC961B01F0E97BFF033 /* SwiftListKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftListKit-umbrella.h"; sourceTree = "<group>"; };
 		F7C1A803700DDE0BB0304290FB05E6B9 /* Pods-SwiftListKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftListKit_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -203,7 +207,9 @@
 				536F60F50E2CEC254CFD8E51DDEE0E54 /* ListAdapter+UICollectionView.swift */,
 				5305E76B75CDF450155390B6B1844B39 /* ListSectionController.swift */,
 				E7955D2FC54F434A9DCCF0541D5E6BDF /* ListSectionMap.swift */,
+				ECAE25D5237B9A4B00E1BE13 /* ListAdpterUpdater.swift */,
 				8AF4C398176825C1208B4CAB7649677B /* SwitListKit.swift */,
+				EC9532C7237C098F0023D41E /* Array.swift */,
 				08AA235A62D5955FFBA2F807C1EA4264 /* Pod */,
 				B44F460C36D3B78EEC3EACE816157D61 /* Support Files */,
 			);
@@ -562,9 +568,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9532C8237C098F0023D41E /* Array.swift in Sources */,
 				CB1B391223704F08930203C4F8F63259 /* ListAdapter+UICollectionView.swift in Sources */,
 				8A7D931EF9F5D15F97F3DEFB591BFF72 /* ListAdapter.swift in Sources */,
 				66A052CFAB82CEF3E4514AF21B26FD59 /* ListAdapterType.swift in Sources */,
+				ECAE25D6237B9A4B00E1BE13 /* ListAdpterUpdater.swift in Sources */,
 				230FA94D1E03B38AAED4BD491EB15418 /* ListSectionController.swift in Sources */,
 				4E8283F124C0C0AF300F500BC9306B3F /* ListSectionMap.swift in Sources */,
 				FF2367CC379D003F9A2ABE06862EB56A /* SwiftListKit-dummy.m in Sources */,
