@@ -20,7 +20,7 @@ public protocol ListDiffable {
     var diffIdentifier: String { get }
 }
 
-public protocol ListSectionController {
+public protocol ListSectionController : class {
     var section: UInt { get }
     var isFirstSection: Bool { get }
     var isLastSection: Bool { get }

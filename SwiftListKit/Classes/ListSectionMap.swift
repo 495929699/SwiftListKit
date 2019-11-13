@@ -10,6 +10,7 @@ import Foundation
 struct ListSectionMap {
     private var sectionMap: [String : ListSectionController] = [:]
     private var values: [ListSectionController] = []
+    private var keys: [String] = []
     
     var count: Int {
         return values.map { $0.numberOfItems() }.reduce(0, { $0 + $1 })
@@ -40,4 +41,17 @@ struct ListSectionMap {
         return sectionMap[diff.diffIdentifier]
     }
     
+    func section(for diff: ListDiffable) -> Int? {
+        guard let sectionController = sectionMap[diff.diffIdentifier] else {
+            return nil
+        }
+        return values.firstIndex { $0 === sectionController }
+    }
+    
+    func value(for index: Int) -> ListDiffable? {
+        guard index > keys.count else {
+            return nil
+        }
+        return keys[index]
+    }
 }

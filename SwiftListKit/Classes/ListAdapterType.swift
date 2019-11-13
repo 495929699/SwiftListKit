@@ -14,9 +14,25 @@ public protocol ListAdapterDataSource: class {
     func emptyView(for listAdapter: ListAdapter) -> UIView?
 }
 
+extension ListAdapterDataSource {
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
+    }
+}
+
 
 // MARK: - ListAdapterDelegate
 public protocol ListAdapterDelegate: class {
     func listAdapter<Item: ListDiffable>(_ listAdapter: ListAdapter, willDisplay object: Item, at index: Int)
     func listAdapter<Item: ListDiffable>(_ listAdapter: ListAdapter, didEndDisplay object: Item, at index: Int)
+}
+
+extension ListAdapterDelegate {
+    func listAdapter<Item: ListDiffable>(_ listAdapter: ListAdapter, willDisplay object: Item, at index: Int) {
+        
+    }
+    
+    func listAdapter<Item: ListDiffable>(_ listAdapter: ListAdapter, didEndDisplay object: Item, at index: Int) {
+        
+    }
 }

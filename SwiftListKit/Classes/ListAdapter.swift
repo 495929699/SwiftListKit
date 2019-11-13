@@ -24,7 +24,12 @@ final public class ListAdapter {
     
     
     // MARK: - 自有属性
-    var sectionMap: ListSectionMap = ListSectionMap()
+    var sectionMap: ListSectionMap = ListSectionMap() {
+        didSet {
+            _collectionDataSource.update(section: sectionMap)
+            _collectionDelegate.update(section: sectionMap)
+        }
+    }
     
     var _viewSwctionControllerMap: [UICollectionReusableView : ListSectionController] = [:]
     
@@ -64,9 +69,6 @@ final public class ListAdapter {
     
     
     //MARK: 自有方法
-    public func reload<Item>(for items: [Item]) {
-        
-    }
     
     public var visibleSectionControllers: [ListSectionController] {
         return []
@@ -88,11 +90,31 @@ final public class ListAdapter {
             let dataSource = self.dataSource
         else { return }
         
-////        let (validObjects,sectionControllers) =
+        let sectionControllers = uniqueObjects.map(sectionController(_:)).compactMap { $0 }
+        
+        let updatedObjects = uniqueObjects.filter(<#T##isIncluded: (ListDiffable) throws -> Bool##(ListDiffable) throws -> Bool#>)
+//        let (validObjects,sectionControllers) =
 //            uniqueObjects
 //                .map(configureSection(for:))
 //                .compactMap { $0 }.reduce([]) { (<#Result#>, <#(ListDiffable, ListSectionController)#>) -> Result in
 //                    <#code#>
+//        }
+        
+    }
+    
+    func sectionController(_ diff: ListDiffable) -> ListSectionController? {
+        var sectionController = sectionMap[diff]
+        if sectionController == nil {
+            sectionController = self.dataSource?.listAdapter(self, sectionControllerFor: diff)
+        }
+        assert(sectionController == nil, "\(diff) 对应的sectionController 不存在")
+        return sectionController
+    }
+    
+    func isUpdateObject(_ diff: ListDiffable) -> Bool {
+        let isContains = sectionMap.contains(diff)
+        if let diffSection = sectionMap.section(for: diff) {
+            let value = sectionMap[diffSection]
         }
         
     }
@@ -121,12 +143,6 @@ final public class ListAdapter {
 
 extension ListAdapter {
     
-    func updateSectionMap(_ map: ListSectionMap) {
-        // 可加入串行队列，防止多线程时出错
-        sectionMap = map
-        _collectionDataSource.update(section: map)
-        _collectionDelegate.update(section: map)
-    }
     
 }
 
